@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/placesToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#1F1F1F"
+        android:title="Manali Places"
+        android:titleTextColor="@android:color/white" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPlaces"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp" />
+
+</LinearLayout>

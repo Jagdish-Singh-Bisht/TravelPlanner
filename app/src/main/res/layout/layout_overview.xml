@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Big Image -->
+        <ImageView
+            android:id="@+id/imgPlaceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="centerCrop" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/txtPlaceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <!-- CLEAN OVERVIEW TEXT (NO CARD, NO ICON, NO HEADING) -->
+        <TextView
+            android:id="@+id/txtPlaceDescLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#DDDDDD"
+            android:lineSpacingExtra="6dp"
+            android:layout_marginTop="10dp" />
+
+
+        <!-- BEST TIME CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_bg"
+            android:padding="12dp"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_best_time"
+                    android:tint="@android:color/white"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+                    android:text="Best Time to Visit"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtBestTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#DDDDDD"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+
+        <!-- HOTELS CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_bg"
+            android:padding="12dp"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_hotel"
+                    android:tint="@android:color/white"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+                    android:text="Nearby Hotels"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtHotels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#DDDDDD"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+
+        <!-- Google Maps Button -->
+        <Button
+            android:id="@+id/btnOpenMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open in Google Maps"
+            android:layout_marginTop="25dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</ScrollView>
