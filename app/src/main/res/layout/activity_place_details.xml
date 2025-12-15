@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
@@ -10,115 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#1F1F1F"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:titleTextColor="@android:color/white" />
 
-    <ScrollView
+    <!-- Tab Layout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="#AAAAAA"/>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <!-- Big Image -->
-            <ImageView
-                android:id="@+id/imgPlaceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:scaleType="centerCrop"
-                android:background="#CCCCCC" />
-
-            <!-- Title -->
-            <TextView
-                android:id="@+id/txtPlaceTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Place Name"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
-
-            <!-- Overview Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Overview"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/txtPlaceDescLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Full overview goes here..."
-                android:layout_marginTop="8dp"
-                android:textSize="16sp" />
-
-            <!-- Best Time -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Best Time to Visit"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:id="@+id/txtBestTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Coming soon..."
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"/>
-
-            <!-- Things To Do -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Things To Do"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:id="@+id/txtThingsToDo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Coming soon..."
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"/>
-
-            <!-- Hotels -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nearby Hotels"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:id="@+id/txtHotels"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Coming soon..."
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"/>
-
-            <!-- Google Maps Button -->
-            <Button
-                android:id="@+id/btnOpenMap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Open in Google Maps"
-                android:layout_marginTop="25dp"
-                android:textSize="18sp"/>
-        </LinearLayout>
-
-    </ScrollView>
+    <!-- Container where each tab loads content -->
+    <FrameLayout
+        android:id="@+id/tabContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -11,32 +11,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelPlanner">
-
-        <!-- New Activity (Place Details Screen) -->
+        <activity
+            android:name=".JaipurPlacesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManaliPlacesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DelhiPlacesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GoaPlacesActivity"
+            android:exported="false" /> <!-- New Activity (Place Details Screen) -->
         <activity
             android:name=".PlaceDetailsActivity"
-            android:exported="false" />
-
-        <!-- NEW: Uttarakhand Places Screen -->
+            android:exported="false" /> <!-- NEW: Uttarakhand Places Screen -->
         <activity
             android:name=".UttarakhandPlacesActivity"
-            android:exported="true" />
-
-        <!-- Old Details Screen -->
+            android:exported="true" /> <!-- Old Details Screen -->
         <activity
             android:name=".DetailsActivity"
-            android:exported="false" />
-
-        <!-- Launcher (Main Screen) -->
+            android:exported="false" /> <!-- Launcher (Main Screen) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

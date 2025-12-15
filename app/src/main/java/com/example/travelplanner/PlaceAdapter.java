@@ -32,24 +32,35 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
     @Override
     public void onBindViewHolder(@NonNull PlaceViewHolder holder, int position) {
+
         Place place = placeList.get(position);
 
         holder.txtPlaceName.setText(place.getName());
-        holder.txtPlaceDesc.setText(place.getShortDesc());
+        holder.txtPlaceDesc.setText(place.getOverview());
         holder.imgPlace.setImageResource(place.getImage());
 
-
-        // Click Listener
+        // Click Listener → Open details page
         holder.itemView.setOnClickListener(v -> {
+
             Intent intent = new Intent(context, PlaceDetailsActivity.class);
+
+            // Basic data
             intent.putExtra("name", place.getName());
             intent.putExtra("image", place.getImage());
-            intent.putExtra("desc", place.getShortDesc());
+            intent.putExtra("overview", place.getOverview());
+            intent.putExtra("bestTime", place.getBestTime());
+            intent.putExtra("hotels", place.getHotels());
+            intent.putExtra("tags", place.getTags());
+
+            // Lat/Lng
             intent.putExtra("lat", place.getLatitude());
             intent.putExtra("lng", place.getLongitude());
+
+            // 🚨 Send the list of ThingsToDo
+            intent.putExtra("thingsList", place.getThingsList());
+
             context.startActivity(intent);
         });
-
     }
 
     @Override

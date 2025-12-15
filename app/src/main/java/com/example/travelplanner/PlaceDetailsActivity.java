@@ -1,22 +1,31 @@
 package com.example.travelplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+
 public class PlaceDetailsActivity extends AppCompatActivity {
 
-    ImageView imgPlaceLarge;
-    TextView txtPlaceTitle, txtPlaceDescLarge;
-    TextView txtBestTime, txtThingsToDo, txtHotels;
-    Button btnOpenMap;
+    String name, overview, bestTime, hotels, tags;
+    int image;
+    double lat, lng;
+
+    ArrayList<ThingItem> thingsList;   // <-- IMPORTANT
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,96 +36,111 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.placeToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(""); // title will come from layout
+        toolbar.setNavigationOnClickListener(v -> finish());
 
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        // Receive Data
+        name = getIntent().getStringExtra("name");
+        image = getIntent().getIntExtra("image", 0);
 
+        overview = getIntent().getStringExtra("overview");
+        bestTime = getIntent().getStringExtra("bestTime");
+        hotels = getIntent().getStringExtra("hotels");
+        tags = getIntent().getStringExtra("tags");
 
-        // Initialize Views
-        imgPlaceLarge = findViewById(R.id.imgPlaceLarge);
-        txtPlaceTitle = findViewById(R.id.txtPlaceTitle);
-        txtPlaceDescLarge = findViewById(R.id.txtPlaceDescLarge);
-        txtBestTime = findViewById(R.id.txtBestTime);
-        txtThingsToDo = findViewById(R.id.txtThingsToDo);
-        txtHotels = findViewById(R.id.txtHotels);
-        btnOpenMap = findViewById(R.id.btnOpenMap);
+        lat = getIntent().getDoubleExtra("lat", 0);
+        lng = getIntent().getDoubleExtra("lng", 0);
 
-        // Get Data From Intent
-        String name = getIntent().getStringExtra("name");
-        int image = getIntent().getIntExtra("image", 0);
-        String desc = getIntent().getStringExtra("desc");
-        double lat = getIntent().getDoubleExtra("lat", 0);
-        double lng = getIntent().getDoubleExtra("lng", 0);
+        // RECEIVE THINGS LIST
+        thingsList = (ArrayList<ThingItem>) getIntent().getSerializableExtra("thingsList");
 
-        // Set Data to UI
-        txtPlaceTitle.setText(name);
-        txtPlaceDescLarge.setText(desc);
-        imgPlaceLarge.setImageResource(image);
+        // Tabs
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
 
-        // Set dynamic data for each place
-        switch (name) {
+        tabLayout.addTab(tabLayout.newTab().setText("Overview").setIcon(R.drawable.ic_overview));
+        tabLayout.addTab(tabLayout.newTab().setText("Things To Do").setIcon(R.drawable.ic_things));
 
-            case "Rishikesh":
-                txtBestTime.setText("September to November and March to May");
-                txtThingsToDo.setText("• River Rafting\n• Ganga Aarti\n• Yoga Sessions\n• Neergarh Waterfall");
-                txtHotels.setText("• Aloha on the Ganges\n• Live Free Hostel\n• Ganga Kinare");
-                break;
+        // Default Tab
+        loadOverview();
 
-            case "Mussoorie":
-                txtBestTime.setText("April to June and September to November");
-                txtThingsToDo.setText("• Mall Road Walk\n• Kempty Falls\n• Gun Hill Ropeway\n• Lal Tibba Viewpoint");
-                txtHotels.setText("• JW Marriott\n• Rokeby Manor\n• Hotel Vishnu Palace");
-                break;
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0) {
+                    loadOverview();
+                } else {
+                    loadThingsToDo();
+                }
+            }
+            @Override public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override public void onTabReselected(TabLayout.Tab tab) {}
+        });
+    }
 
-            case "Nainital":
-                txtBestTime.setText("March to June and October to December");
-                txtThingsToDo.setText("• Boating in Naini Lake\n• Naina Peak Trek\n• Eco Cave Gardens\n• Snow View Point");
-                txtHotels.setText("• Manu Maharani\n• Seasons Resort\n• Nainital Palace");
-                break;
+    // --------------------------
+    // LOAD OVERVIEW TAB
+    // --------------------------
+    private void loadOverview() {
+        FrameLayout tabContainer = findViewById(R.id.tabContainer);
+        tabContainer.removeAllViews();
 
-            case "Dehradun":
-                txtBestTime.setText("March to June");
-                txtThingsToDo.setText("• Robber’s Cave\n• FRI Museum\n• Tapkeshwar Temple\n• Sahastradhara");
-                txtHotels.setText("• Lemon Tree Hotel\n• Clarion Hotel\n• Hotel Saffron Leaf");
-                break;
+        getLayoutInflater().inflate(R.layout.layout_overview, tabContainer, true);
 
-            case "Jim Corbett":
-                txtBestTime.setText("November to February (best for safari)");
-                txtThingsToDo.setText("• Jeep Safari\n• Bird Watching\n• Garjia Temple\n• Corbett Falls");
-                txtHotels.setText("• Corbett Riverside\n• Taj Corbett Resort\n• Tiger Camp Resort");
-                break;
+        ImageView img = findViewById(R.id.imgPlaceLarge);
+        TextView title = findViewById(R.id.txtPlaceTitle);
+        TextView desc = findViewById(R.id.txtPlaceDescLarge);
+        TextView tBest = findViewById(R.id.txtBestTime);
+        TextView tHotels = findViewById(R.id.txtHotels);
+        Button btnOpen = findViewById(R.id.btnOpenMap);
 
-            case "Auli":
-                txtBestTime.setText("December to February (snow), March to June (pleasant)");
-                txtThingsToDo.setText("• Skiing\n• Ropeway Ride\n• Gorson Bugyal Trek\n• Snow Activities");
-                txtHotels.setText("• Blue Poppy Resort\n• Clifftop Club\n• Kuber Resort");
-                break;
+        img.setImageResource(image);
+        title.setText(name);
+        desc.setText(overview);
+        tBest.setText(bestTime);
+        tHotels.setText(hotels);
 
-            case "Kedarnath":
-                txtBestTime.setText("May to June and September to October");
-                txtThingsToDo.setText("• Kedarnath Temple\n• Vasuki Tal Trek\n• Bhairavnath Temple");
-                txtHotels.setText("• GMVN Kedarnath\n• Lodges at Sitapur/Sonprayag");
-                break;
+        btnOpen.setOnClickListener(v -> {
+            String uri = "geo:" + lat + "," + lng + "?q=" + lat + "," + lng + "(" + name + ")";
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
+        });
+    }
 
-            case "Valley of Flowers":
-                txtBestTime.setText("July to September (flowers bloom)");
-                txtThingsToDo.setText("• Valley Trek\n• Hemkund Sahib Trek\n• Photography\n• Bird Watching");
-                txtHotels.setText("• Hotels in Ghangaria\n• GMVN Guest Houses");
-                break;
+    // --------------------------
+    // LOAD THINGS TO DO TAB
+    // --------------------------
+    private void loadThingsToDo() {
+        FrameLayout tabContainer = findViewById(R.id.tabContainer);
+        tabContainer.removeAllViews();
 
-            case "Tungnath":
-                txtBestTime.setText("April to June and September to November");
-                txtThingsToDo.setText("• Tungnath Temple\n• Chandrashila Summit Trek\n• Snow Trek\n• Sunrise View");
-                txtHotels.setText("• Chopta Camps\n• Magpie Camp\n• Snow View Resort");
-                break;
+        getLayoutInflater().inflate(R.layout.layout_things_to_do, tabContainer, true);
+
+        // 1️⃣ Setup Chips (Famous For)
+        ChipGroup chipGroup = findViewById(R.id.chipGroupTags);
+
+        if (tags != null && !tags.isEmpty()) {
+            String[] tagArray = tags.split(",");
+
+            for (String tag : tagArray) {
+                Chip chip = new Chip(this);
+                chip.setText(tag.trim());
+                chip.setChipBackgroundColorResource(R.color.purple_200);
+                chip.setTextColor(getResources().getColor(android.R.color.white));
+                chip.setClickable(false);
+                chip.setCheckable(false);
+
+                chipGroup.addView(chip);
+            }
         }
 
-        // Open Location in Google Maps
-        btnOpenMap.setOnClickListener(v -> {
-            String uri = "geo:" + lat + "," + lng + "?q=" + lat + "," + lng + "(" + name + ")";
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-            intent.setPackage("com.google.android.apps.maps");
-            startActivity(intent);
-        });
+        // 2️⃣ RecyclerView for Things To Do
+        RecyclerView recycler = findViewById(R.id.recyclerThings);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+
+        if (thingsList == null)
+            thingsList = new ArrayList<>();
+
+        ThingsAdapter adapter = new ThingsAdapter(this, thingsList);
+        recycler.setAdapter(adapter);
     }
 }

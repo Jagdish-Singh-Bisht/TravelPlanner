@@ -53,6 +53,7 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
         });
         */
 
+        /* i replace this clickListener with next one
 
         holder.itemView.setOnClickListener(v -> {
 
@@ -71,7 +72,43 @@ public class DestinationAdapter extends RecyclerView.Adapter<DestinationAdapter.
             }
 
         });
+        */
 
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent intent;
+
+            switch (d.getName()) {
+
+                case "Uttarakhand":
+                    intent = new Intent(context, UttarakhandPlacesActivity.class);
+                    break;
+
+                case "Goa":
+                    intent = new Intent(context, GoaPlacesActivity.class);
+                    break;
+
+                case "Manali":
+                    intent = new Intent(context, ManaliPlacesActivity.class);
+                    break;
+
+                case "Jaipur":
+                    intent = new Intent(context, JaipurPlacesActivity.class);
+                    break;
+
+                case "Delhi":
+                    intent = new Intent(context, DelhiPlacesActivity.class);
+                    break;
+
+                default:
+                    intent = new Intent(context, DetailsActivity.class);
+                    intent.putExtra("name", d.getName());
+                    intent.putExtra("image", d.getImage());
+                    break;
+            }
+
+            context.startActivity(intent);
+        });
 
     }
 
