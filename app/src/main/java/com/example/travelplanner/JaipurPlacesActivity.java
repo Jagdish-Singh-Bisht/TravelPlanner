@@ -37,6 +37,8 @@ public class JaipurPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Amber Fort",
                 R.drawable.amber_fort,
+                R.drawable.amber_fort,
+                R.drawable.amber_fort,
                 "Grand fort showcasing Rajput architecture.",
                 "October to March",
                 amberThings,

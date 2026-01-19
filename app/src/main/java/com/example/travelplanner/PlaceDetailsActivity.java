@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 public class PlaceDetailsActivity extends AppCompatActivity {
 
     String name, overview, bestTime, hotels, tags;
-    int image;
+    int image1, image2, image3;
     double lat, lng;
 
     ArrayList<ThingItem> thingsList;   // <-- IMPORTANT
@@ -40,7 +41,10 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
         // Receive Data
         name = getIntent().getStringExtra("name");
-        image = getIntent().getIntExtra("image", 0);
+        image1 = getIntent().getIntExtra("image1", 0);
+        image2 = getIntent().getIntExtra("image2", 0);
+        image3 = getIntent().getIntExtra("image3", 0);
+
 
         overview = getIntent().getStringExtra("overview");
         bestTime = getIntent().getStringExtra("bestTime");
@@ -85,14 +89,25 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
         getLayoutInflater().inflate(R.layout.layout_overview, tabContainer, true);
 
-        ImageView img = findViewById(R.id.imgPlaceLarge);
+        ViewPager2 slider = findViewById(R.id.imageSlider);
+
+        // TEMP: 3 images (you can replace later)
+        ArrayList<Integer> images = new ArrayList<>();
+        images.add(image1);
+        images.add(image2);
+        images.add(image3);
+
+        ImageSliderAdapter sliderAdapter = new ImageSliderAdapter(images);
+        slider.setAdapter(sliderAdapter);
+
+        // REMOVE: ImageView img = findViewById(R.id.imgPlaceLarge);
         TextView title = findViewById(R.id.txtPlaceTitle);
         TextView desc = findViewById(R.id.txtPlaceDescLarge);
         TextView tBest = findViewById(R.id.txtBestTime);
         TextView tHotels = findViewById(R.id.txtHotels);
         Button btnOpen = findViewById(R.id.btnOpenMap);
 
-        img.setImageResource(image);
+        // REMOVE: img.setImageResource(image);
         title.setText(name);
         desc.setText(overview);
         tBest.setText(bestTime);

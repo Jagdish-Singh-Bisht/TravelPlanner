@@ -37,7 +37,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
         holder.txtPlaceName.setText(place.getName());
         holder.txtPlaceDesc.setText(place.getOverview());
-        holder.imgPlace.setImageResource(place.getImage());
+        holder.imgPlace.setImageResource(place.getImage1());
 
         // Click Listener → Open details page
         holder.itemView.setOnClickListener(v -> {
@@ -46,7 +46,9 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
             // Basic data
             intent.putExtra("name", place.getName());
-            intent.putExtra("image", place.getImage());
+            intent.putExtra("image1", place.getImage1());
+            intent.putExtra("image2", place.getImage2());
+            intent.putExtra("image3", place.getImage3());
             intent.putExtra("overview", place.getOverview());
             intent.putExtra("bestTime", place.getBestTime());
             intent.putExtra("hotels", place.getHotels());

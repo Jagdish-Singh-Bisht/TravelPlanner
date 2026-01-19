@@ -30,19 +30,27 @@ public class DelhiPlacesActivity extends AppCompatActivity {
 
         // 1️⃣ INDIA GATE
         ArrayList<ThingItem> indiaGateThings = new ArrayList<>();
-        indiaGateThings.add(new ThingItem(R.drawable.ic_monument, "Evening Walk",
-                "Iconic landmark", "Best after sunset",
-                "Free entry", "Crowded weekends"));
+        indiaGateThings.add(new ThingItem(
+                R.drawable.ic_monument,
+                "Evening Walk",
+                "Iconic landmark",
+                "Best after sunset",
+                "Free entry",
+                "Crowded weekends"
+        ));
 
         placesList.add(new Place(
                 "India Gate",
+                R.drawable.indiagate,
+                R.drawable.indiagate,
                 R.drawable.indiagate,
                 "National war memorial and popular city landmark.",
                 "October to March",
                 indiaGateThings,
                 "Nearby CP hotels",
                 "Monument, City, Landmark",
-                28.6129, 77.2295
+                28.6129,
+                77.2295
         ));
 
         adapter = new PlaceAdapter(this, placesList);

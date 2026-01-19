@@ -40,6 +40,8 @@ public class ManaliPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Solang Valley",
                 R.drawable.solang,
+                R.drawable.solang,
+                R.drawable.solang,
                 "Adventure hub near Manali famous for snow sports.",
                 "December to February",
                 solangThings,
@@ -56,6 +58,8 @@ public class ManaliPlacesActivity extends AppCompatActivity {
 
         placesList.add(new Place(
                 "Hadimba Temple",
+                R.drawable.hadimba,
+                R.drawable.hadimba,
                 R.drawable.hadimba,
                 "Ancient temple surrounded by cedar forest.",
                 "March to June",

@@ -10,11 +10,12 @@
         android:layout_height="wrap_content">
 
         <!-- Big Image -->
-        <ImageView
-            android:id="@+id/imgPlaceLarge"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:scaleType="centerCrop" />
+            android:layout_marginBottom="12dp"/>
+
 
         <!-- Title -->
         <TextView

@@ -47,6 +47,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Rishikesh",
                 R.drawable.rishikesh,
+                R.drawable.rishikesh_ram_jhula,
+                R.drawable.rishikesh_triveni_ghat,
                 "Yoga Capital of the World · River rafting · Ganga Aarti at Triveni Ghat.",
                 "September to November · March to May",
                 rishikeshThings,
@@ -74,6 +76,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Mussoorie",
                 R.drawable.mussoorie,
+                R.drawable.mussoorie_3,
+                R.drawable.mussoorie_3,
                 "Queen of Hills with waterfalls, viewpoints, colonial charm.",
                 "April to June · September to November",
                 mussoorieThings,
@@ -101,6 +105,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Nainital",
                 R.drawable.nainital,
+                R.drawable.nainital_lake,
+                R.drawable.nainital_snow_view_point,
                 "Beautiful lakeside town featuring boating and Himalayan viewpoints.",
                 "March to June · October to December",
                 nainitalThings,
@@ -128,6 +134,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Dehradun",
                 R.drawable.dehradun,
+                R.drawable.dehradun_2,
+                R.drawable.dehradun_3,
                 "Capital city known for caves, waterfalls, and forest research institute.",
                 "March to June",
                 dehradunThings,
@@ -155,6 +163,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Jim Corbett",
                 R.drawable.corbett,
+                R.drawable.corbett_2,
+                R.drawable.corbett_3,
                 "India’s oldest national park known for tigers and safaris.",
                 "November to February",
                 corbettThings,
@@ -182,6 +192,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Auli",
                 R.drawable.auli,
+                R.drawable.auli_2,
+                R.drawable.auli_3,
                 "Snowy ski destination with ropeway and breathtaking Himalayan views.",
                 "December to February (snow) · March to June (pleasant)",
                 auliThings,
@@ -209,6 +221,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Kedarnath",
                 R.drawable.kedarnath,
+                R.drawable.kedarnath_2,
+                R.drawable.kedarnath_3,
                 "Sacred Shiva temple located amid Himalayan mountains.",
                 "May to June · September to October",
                 kedarnathThings,
@@ -236,6 +250,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Valley of Flowers",
                 R.drawable.valleyflowers,
+                R.drawable.valleyflowers_2,
+                R.drawable.valleyflowers_3,
                 "UNESCO heritage valley blooming with seasonal flowers.",
                 "July to September",
                 vofThings,
@@ -263,6 +279,8 @@ public class UttarakhandPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Tungnath",
                 R.drawable.tungnath,
+                R.drawable.tungnath_2,
+                R.drawable.tungnath_3,
                 "World’s highest Shiva temple · gateway to Chandrashila peak.",
                 "April to June · September to November",
                 tungnathThings,

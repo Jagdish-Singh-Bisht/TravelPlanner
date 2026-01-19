@@ -43,6 +43,8 @@ public class GoaPlacesActivity extends AppCompatActivity {
         placesList.add(new Place(
                 "Baga Beach",
                 R.drawable.baga,
+                R.drawable.baga,
+                R.drawable.baga,
                 "One of Goa’s most famous beaches known for nightlife and water sports.",
                 "November to March",
                 bagaThings,
@@ -62,6 +64,8 @@ public class GoaPlacesActivity extends AppCompatActivity {
 
         placesList.add(new Place(
                 "Calangute Beach",
+                R.drawable.calangute,
+                R.drawable.calangute,
                 R.drawable.calangute,
                 "Largest beach in North Goa with vibrant crowd and activities.",
                 "November to March",
